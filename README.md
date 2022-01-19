@@ -13,7 +13,7 @@ You'll be able to change functions of pre-defined spell functions or expand easi
 This skill will generate the actual skill based on the config.yml. With the reload intent you'll be able to reload the actual skill with new 
 defined functions of your config.yml
 
-# config.yml
+## config.yml
 
 In this section you learn how to edit the conig.yml for adding your custom functions.
 
