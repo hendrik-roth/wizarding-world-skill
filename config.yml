@@ -6,3 +6,19 @@ avada_kedavra:
 expecto_patronum:
   function: expecto_patronum
   intent: "expecto patronum"
+
+obliviate:
+  function: obliviate
+  intent: "obliviate"
+
+reducto:
+  function: reducto
+  intent: "reducto"
+
+salvio_hexia:
+  function: salvio_hexia
+  intent: "salvio hexia"
+
+quietus:
+  function: quietus
+  intent: "intent"
