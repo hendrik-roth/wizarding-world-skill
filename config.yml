@@ -1,0 +1,8 @@
+---
+avada_kedavra:
+  function: avada_kedavra
+  intent: "avada kedavra"
+
+expecto_patronum:
+  function: expecto_patronum
+  intent: "expecto patronum"
