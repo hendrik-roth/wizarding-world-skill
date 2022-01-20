@@ -1,24 +1,24 @@
 ---
 avada_kedavra:
-  function: avada_kedavra
+  pyfunction: avada_kedavra
   intent: "avada kedavra"
 
 expecto_patronum:
-  function: expecto_patronum
+  pyfunction: expecto_patronum
   intent: "expecto patronum"
 
 obliviate:
-  function: obliviate
+  pyfunction: obliviate
   intent: "obliviate"
 
 reducto:
-  function: reducto
+  pyfunction: reducto
   intent: "reducto"
 
 salvio_hexia:
-  function: salvio_hexia
+  pyfunction: salvio_hexia
   intent: "salvio hexia"
 
 quietus:
-  function: quietus
+  pyfunction: quietus
   intent: "intent"
