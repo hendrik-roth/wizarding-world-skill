@@ -10,12 +10,12 @@ Use spells of the wizarding world universe for some operations on your computer.
 
 You'll be able to change functions of pre-defined spell functions or expand easily the spells with custom functions/add custom spells.
 
-This skill will generate the actual skill based on the config.yml. With the reload intent you'll be able to reload the actual skill with new 
-defined functions of your config.yml
+This skill will generate the actual skill based on the registry.yml. With the reload intent you'll be able to reload the actual skill with new 
+defined functions of your registry.yml
 
-## config.yml
+## registry.yml
 
-In this section you learn how to edit the conig.yml for adding your custom functions.
+In this section you learn how to edit the registry.yml for adding your custom functions.
 
 (currently under development)
 
