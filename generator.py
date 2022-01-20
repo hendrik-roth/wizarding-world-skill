@@ -1,5 +1,5 @@
 import os
-import subprocess
+import yaml
 from pathlib import Path
 from shutil import copy2
 
@@ -7,6 +7,8 @@ from shutil import copy2
 class Generator:
     def __init__(self):
         self.target_path = "/opt/mycroft/skills/wizard-spell-skill"
+        self.intent_path = self.target_path + "/locale/en-us"
+        self.registry_data = self.read_registry()
 
     def load_spell_skill(self):
         if not self.does_skilldir_exists():
@@ -50,16 +52,28 @@ class Generator:
         """
         overwrite (or create) intent files based on registry.yml
         """
-        pass
+        for key, value in self.registry_data.items():
+            self.create_intent_file(filename=key, intent=value["intent"])
 
     def overwrite_init(self):
         """
         overwrite (or create) __init__.py in generated skill based on
-        registry.yml
+        registry.yml data and use init_template as template
         """
-        # after overwriting/creation run black for formatting
-        subprocess.run(["black", f"{self.target_path}/__init__.py"])
-        pass
+        with open("init_template.py", "r") as template:
+            init_code = template.read()
+
+        code_split = init_code.split("# insert")
+        code_before_insert = code_split[0]
+        code_after_insert = code_split[1].strip("\n")
+
+        intent_handler_code = self.generate_intent_handling_code()
+
+        generated_code = code_before_insert + intent_handler_code + \
+                         "\n" + code_after_insert + "\n"
+
+        with open(f"{self.target_path}/__init__.py", "w+") as generated_file:
+            generated_file.write(generated_code)
 
     def create_manifest(self):
         """
@@ -67,3 +81,52 @@ class Generator:
         spell.py
         """
         pass
+
+    def generate_intent_handling_code(self):
+        """
+        generating @intent_handler code
+
+        Returns
+        -------
+        code : str
+            correct formatted, generated code
+        """
+        code = ""
+        for key, value in self.registry_data.items():
+            intent_file = f"{key}.intent"
+            pyfunction = value["pyfunction"]
+
+            code += f"    @intent_handler('{intent_file}')\n" \
+                    f"    def handle_{key}(self):\n" \
+                    f"        spells.{pyfunction}()\n\n"
+        return code
+
+    def create_intent_file(self, filename, intent):
+        """
+        create an .intent file in locale/en-us dir
+
+        Parameters
+        ----------
+        filename
+            filename of the .intent file
+        intent
+            intent (content) of the file
+        """
+        with open(f"{self.intent_path}/{filename}.intent", "w+") as file:
+            file.write(intent)
+
+    @staticmethod
+    def read_registry():
+        """
+        read out data from registry.yml
+
+        Returns
+        -------
+        data : dict
+            dictionary which contains function as key and details as dict, e.g.
+            {'avada_kedavra': {'pyfunction': 'avada_kedavra',
+             'intent': 'avada kedavra'}, 'reducto': {...}, ..}
+        """
+        with open("registry.yml", "r+") as registry:
+            data_loaded = yaml.safe_load(registry)
+        return data_loaded
