@@ -9,7 +9,7 @@ def avada_kedavra(skill_instance):
     skill_instance.log.info(answer)
     if answer == "yes":
         skill_instance.speak("Goodbye")
-        os.system("poweroff")
+        os.system("shutdown -t 5")
     else:
         skill_instance.speak("Okay, I will not shutdown your computer")
 
