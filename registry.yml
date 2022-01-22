@@ -21,4 +21,4 @@ salvio_hexia:
 
 quietus:
   pyfunction: quietus
-  intent: "intent"
+  intent: "quietus"

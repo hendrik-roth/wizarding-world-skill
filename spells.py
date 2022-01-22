@@ -6,7 +6,8 @@ from mycroft import MycroftSkill
 
 
 def avada_kedavra():
-    answer = MycroftSkill.ask_yesno("Are you sure to shutdown your computer?")
+    answer = MycroftSkill.ask_yesno(
+        prompt="Are you sure to shutdown your computer?")
     if answer == "yes":
         os.system("shutdown /s /t 1")
     else:
