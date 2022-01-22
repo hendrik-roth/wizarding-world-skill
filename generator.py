@@ -6,8 +6,9 @@ from shutil import copy2
 
 class Generator:
     def __init__(self):
-        self.target_path = "/opt/mycroft/skills/wizard-spell-skill"
+        self.target_path = "/opt/mycroft/skills/wizard-spell-skill.generated"
         self.intent_path = self.target_path + "/locale/en-us"
+        self.skill_path = os.path.dirname(os.path.realpath(__file__))
         self.registry_data = self.read_registry()
 
     def load_spell_skill(self):
@@ -60,7 +61,7 @@ class Generator:
         overwrite (or create) __init__.py in generated skill based on
         registry.yml data and use init_template as template
         """
-        with open("init_template.py", "r") as template:
+        with open(f"{self.skill_path}/init_template.py", "r") as template:
             init_code = template.read()
 
         code_split = init_code.split("# insert")
@@ -80,7 +81,7 @@ class Generator:
         create manifest.yml for generated skill based on dependencies in
         spell.py
         """
-        copy2("manifest.yml", self.target_path)
+        copy2(f"{self.skill_path}/manifest.yml", self.target_path)
 
     def generate_intent_handling_code(self):
         """
@@ -115,8 +116,7 @@ class Generator:
         with open(f"{self.intent_path}/{filename}.intent", "w+") as file:
             file.write(intent)
 
-    @staticmethod
-    def read_registry():
+    def read_registry(self):
         """
         read out data from registry.yml
 
@@ -127,6 +127,6 @@ class Generator:
             {'avada_kedavra': {'pyfunction': 'avada_kedavra',
              'intent': 'avada kedavra'}, 'reducto': {...}, ..}
         """
-        with open("registry.yml", "r+") as registry:
+        with open(f"{self.skill_path}/registry.yml", "r") as registry:
             data_loaded = yaml.safe_load(registry)
         return data_loaded
