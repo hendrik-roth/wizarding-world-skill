@@ -1,6 +1,7 @@
 import os
 import webbrowser
 import alsaaudio
+import time
 
 
 def avada_kedavra(skill_instance):
@@ -9,7 +10,8 @@ def avada_kedavra(skill_instance):
     skill_instance.log.info(answer)
     if answer == "yes":
         skill_instance.speak("Goodbye")
-        os.system("shutdown -t 5")
+        time.sleep(5)
+        os.system("poweroff")
     else:
         skill_instance.speak("Okay, I will not shutdown your computer")
 
