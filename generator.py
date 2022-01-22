@@ -47,7 +47,7 @@ class Generator:
         have this file in the new skill
 
         """
-        copy2("spells.py", self.target_path)
+        copy2(f"{self.skill_path}/spells.py", self.target_path)
 
     def overwrite_intent_files(self):
         """
