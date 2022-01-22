@@ -6,8 +6,10 @@ import alsaaudio
 def avada_kedavra(skill_instance):
     answer = skill_instance.ask_yesno(
         prompt="Are you sure to shutdown your computer?")
+    skill_instance.log.info(answer)
     if answer == "yes":
-        os.system("shutdown /s /t 1")
+        skill_instance.speak("Goodbye")
+        os.system("poweroff")
     else:
         skill_instance.speak("Okay, I will not shutdown your computer")
 
