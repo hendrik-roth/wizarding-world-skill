@@ -1,5 +1,5 @@
 from mycroft import MycroftSkill, intent_handler
-import spells
+from .spells import *
 
 
 class WizardingWorldSpells(MycroftSkill):
