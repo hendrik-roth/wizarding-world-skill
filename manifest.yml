@@ -1,7 +1,6 @@
 dependencies:
   python:
     - pathlib
-    - yaml
     - shutil
     - webbrowser
 
