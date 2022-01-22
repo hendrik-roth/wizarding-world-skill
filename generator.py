@@ -99,7 +99,7 @@ class Generator:
 
             code += f"    @intent_handler('{intent_file}')\n" \
                     f"    def handle_{key}(self):\n" \
-                    f"        spells.{pyfunction}()\n\n"
+                    f"        spells.{pyfunction}(self)\n\n"
         return code
 
     def create_intent_file(self, filename, intent):

@@ -2,16 +2,14 @@ import os
 import webbrowser
 import alsaaudio
 
-from . import WizardingWorld
 
-
-def avada_kedavra():
-    answer = WizardingWorld.ask_yesno(
+def avada_kedavra(skill_instance):
+    answer = skill_instance.ask_yesno(
         prompt="Are you sure to shutdown your computer?")
     if answer == "yes":
         os.system("shutdown /s /t 1")
     else:
-        WizardingWorld.speak("Okay, I will not shutdown your computer")
+        skill_instance.speak("Okay, I will not shutdown your computer")
 
 
 def expecto_patronum():
