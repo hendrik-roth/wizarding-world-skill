@@ -105,9 +105,7 @@ Configuration
 
 ## Tags
 
-# Harry potter
-
-# Spells
-
-# Wizarding world
+#Harry potter
+#Spells
+#Wizarding world
 
