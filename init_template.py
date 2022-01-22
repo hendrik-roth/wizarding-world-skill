@@ -4,7 +4,7 @@ from .spells import *
 
 class WizardingWorldSpells(MycroftSkill):
     def __init__(self):
-        MycroftSkill.__init__()
+        super().__init__()
 
 
 # insert
