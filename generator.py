@@ -127,6 +127,6 @@ class Generator:
             {'avada_kedavra': {'pyfunction': 'avada_kedavra',
              'intent': 'avada kedavra'}, 'reducto': {...}, ..}
         """
-        with open("registry.yml", "r") as registry:
+        with open("registry.yml", "r+") as registry:
             data_loaded = yaml.safe_load(registry)
         return data_loaded
