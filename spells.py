@@ -5,6 +5,15 @@ import time
 
 
 def avada_kedavra(skill_instance):
+    """
+    shutdown computer when avada kedavra is called.
+
+    Parameters
+    ----------
+    skill_instance
+        instance of MycroftSkill for performing .speak or .ask_yesno functions
+        of mycroft
+    """
     answer = skill_instance.ask_yesno(
         prompt="Are you sure to shutdown your computer?")
     skill_instance.log.info(answer)
@@ -17,6 +26,9 @@ def avada_kedavra(skill_instance):
 
 
 def expecto_patronum():
+    """
+    open stackoverflow
+    """
     webbrowser.open("https://stackoverflow.com")
 
 
@@ -29,6 +41,9 @@ def obliviate():
 
 
 def quietus():
+    """
+    reduce audio volume -10%
+    """
     m = alsaaudio.Mixer()
     vol = m.getvolume()
     vol = int(vol[0])
