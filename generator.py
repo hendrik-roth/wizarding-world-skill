@@ -120,7 +120,7 @@ class Generator:
         """
         with open(f"{self.intent_path}/{filename}.intent", "w+") as file:
             for line in intent:
-                file.write(line)
+                file.write(line + "\n")
 
     def read_registry(self):
         """
