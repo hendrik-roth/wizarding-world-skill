@@ -17,7 +17,7 @@ obliviate:
 reducto:
   pyfunction: reducto
   intent: ["reducto"]
-  response: False
+  prompts: False
 
 salvio_hexia:
   pyfunction: salvio_hexia
