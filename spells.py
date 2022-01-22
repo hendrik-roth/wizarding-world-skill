@@ -2,16 +2,16 @@ import os
 import webbrowser
 import alsaaudio
 
-from mycroft import MycroftSkill
+from . import WizardingWorld
 
 
 def avada_kedavra():
-    answer = MycroftSkill.ask_yesno(
+    answer = WizardingWorld.ask_yesno(
         prompt="Are you sure to shutdown your computer?")
     if answer == "yes":
         os.system("shutdown /s /t 1")
     else:
-        MycroftSkill.speak("Okay, I will not shutdown your computer")
+        WizardingWorld.speak("Okay, I will not shutdown your computer")
 
 
 def expecto_patronum():
