@@ -96,8 +96,8 @@ class Generator:
         for key, value in self.registry_data.items():
             intent_file = f"{key}.intent"
             pyfunction = value["pyfunction"]
-            response = value["response"]
-            if response:
+            prompts = value["prompts"]
+            if prompts:
                 code += f"    @intent_handler('{intent_file}')\n" \
                         f"    def handle_{key}(self):\n" \
                         f"        spells.{pyfunction}(self)\n\n"
@@ -119,7 +119,8 @@ class Generator:
             intent (content) of the file
         """
         with open(f"{self.intent_path}/{filename}.intent", "w+") as file:
-            file.write(intent)
+            for line in intent:
+                file.write(line)
 
     def read_registry(self):
         """
