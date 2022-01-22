@@ -96,10 +96,15 @@ class Generator:
         for key, value in self.registry_data.items():
             intent_file = f"{key}.intent"
             pyfunction = value["pyfunction"]
-
-            code += f"    @intent_handler('{intent_file}')\n" \
-                    f"    def handle_{key}(self):\n" \
-                    f"        spells.{pyfunction}(self)\n\n"
+            response = value["response"]
+            if response:
+                code += f"    @intent_handler('{intent_file}')\n" \
+                        f"    def handle_{key}(self):\n" \
+                        f"        spells.{pyfunction}(self)\n\n"
+            else:
+                code += f"    @intent_handler('{intent_file}')\n" \
+                        f"    def handle_{key}(self):\n" \
+                        f"        spells.{pyfunction}()\n\n"
         return code
 
     def create_intent_file(self, filename, intent):

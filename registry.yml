@@ -2,23 +2,29 @@
 avada_kedavra:
   pyfunction: avada_kedavra
   intent: "avada kedavra"
+  response: True
 
 expecto_patronum:
   pyfunction: expecto_patronum
   intent: "expecto patronum"
+  response: False
 
 obliviate:
   pyfunction: obliviate
   intent: "obliviate"
+  response: False
 
 reducto:
   pyfunction: reducto
   intent: "reducto"
+  response: False
 
 salvio_hexia:
   pyfunction: salvio_hexia
   intent: "salvio hexia"
+  response: False
 
 quietus:
   pyfunction: quietus
   intent: "quietus"
+  response: False
