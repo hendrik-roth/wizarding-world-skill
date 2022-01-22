@@ -15,7 +15,7 @@ class Generator:
             self.create_skill_dirs()
         self.copy_spell_script()
         self.overwrite_intent_files()
-        self.create_manifest()
+        self.copy_manifest()
         self.overwrite_init()
 
     def does_skilldir_exists(self) -> bool:
@@ -75,12 +75,12 @@ class Generator:
         with open(f"{self.target_path}/__init__.py", "w+") as generated_file:
             generated_file.write(generated_code)
 
-    def create_manifest(self):
+    def copy_manifest(self):
         """
         create manifest.yml for generated skill based on dependencies in
         spell.py
         """
-        pass
+        copy2("manifest.yml", self.target_path)
 
     def generate_intent_handling_code(self):
         """
@@ -127,6 +127,6 @@ class Generator:
             {'avada_kedavra': {'pyfunction': 'avada_kedavra',
              'intent': 'avada kedavra'}, 'reducto': {...}, ..}
         """
-        with open("registry.yml", "r+") as registry:
+        with open("registry.yml", "r") as registry:
             data_loaded = yaml.safe_load(registry)
         return data_loaded
